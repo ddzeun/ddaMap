@@ -137,5 +137,8 @@
 ---
 
 ## 🗃️ 6. 데이터베이스 설계 (ERD)
+(기능 추가에 따라 확장 예정)
+<p align="center">
+  <img width="570" alt="image" src="https://github.com/user-attachments/assets/5a673fd1-07f1-489c-9896-d041f1743fa6" />
+</p>
 
-(추가 예정)
