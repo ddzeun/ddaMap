@@ -1,0 +1,55 @@
+# ?? ?? ??? ??? ??
+spring:
+  config:
+    import: optional:application-secret.yml
+
+---
+# ----------------------------------
+# ?? ??
+# ----------------------------------
+spring:
+  application:
+    name: ddamap
+
+server:
+  port: 8080
+
+  # JPA ?? ??
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    properties:
+      hibernate:
+        format_sql: true
+---
+# ----------------------------------
+# local ???
+# ----------------------------------
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ddamap_db
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+---
+# ----------------------------------
+# dev ???
+# ----------------------------------
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://{????DB??}/ddamap_db
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: none
