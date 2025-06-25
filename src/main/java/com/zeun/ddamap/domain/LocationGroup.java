@@ -18,4 +18,8 @@ public class LocationGroup {
 
     @Column(name = "group_name", nullable = false, unique = true)
     private String groupName;
+
+    public LocationGroup(String groupName) {
+        this.groupName = groupName;
+    }
 }
