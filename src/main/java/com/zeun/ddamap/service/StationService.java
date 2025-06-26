@@ -55,11 +55,24 @@ public class StationService {
                 .map(station -> new StationResponseDTO(
                         station.getStnId(),
                         station.getStnName(),
-                        station.getStnAddr1() + station.getStnAddr2(),
+                        combineAddress(station.getStnAddr1(), station.getStnAddr2()),
                         station.getStnLat(),
                         station.getStnLong()
                 )).toList();
 
         return stationList;
+    }
+
+    private String combineAddress(String addr1, String addr2) {
+
+        String address1 = (addr1 == null) ? "" : addr1.trim();
+        String address2 = (addr2 == null) ? "" : addr2.trim();
+
+        if (!address1.isEmpty() && !address2.isEmpty()) {
+
+            return address1 + " " + address2;
+        }
+
+        return address1 + address2;
     }
 }
