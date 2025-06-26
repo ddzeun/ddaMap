@@ -2,6 +2,7 @@ package com.zeun.ddamap.service;
 
 import com.zeun.ddamap.domain.LocationGroup;
 import com.zeun.ddamap.domain.Station;
+import com.zeun.ddamap.dto.StationResponseDTO;
 import com.zeun.ddamap.dto.StationRowDTO;
 import com.zeun.ddamap.repository.LocationGroupRepository;
 import com.zeun.ddamap.repository.StationRepository;
@@ -46,5 +47,19 @@ public class StationService {
 
             stationRepository.save(station);
         });
+    }
+
+    public List<StationResponseDTO> getAllStations() {
+
+        List<StationResponseDTO> stationList = stationRepository.findAll().stream()
+                .map(station -> new StationResponseDTO(
+                        station.getStnId(),
+                        station.getStnName(),
+                        station.getStnAddr1() + station.getStnAddr2(),
+                        station.getStnLat(),
+                        station.getStnLong()
+                )).toList();
+
+        return stationList;
     }
 }
