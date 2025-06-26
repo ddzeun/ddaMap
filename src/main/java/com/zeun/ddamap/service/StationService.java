@@ -27,7 +27,7 @@ public class StationService {
 
         stationList.forEach(dto -> {
 
-            LocationGroup locationGroup = (LocationGroup) locationGroupRepository.findByGroupName(dto.stnLoc())
+            LocationGroup locationGroup = locationGroupRepository.findByGroupName(dto.stnLoc())
                     .orElseGet(() -> {
                         LocationGroup newGroup = new LocationGroup(dto.stnLoc());
                         return locationGroupRepository.save(newGroup);

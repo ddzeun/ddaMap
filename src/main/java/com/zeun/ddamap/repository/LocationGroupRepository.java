@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface LocationGroupRepository extends JpaRepository<LocationGroup, Long> {
 
-    Optional<Object> findByGroupName(String s);
+    Optional<LocationGroup> findByGroupName(String groupName);
 }
