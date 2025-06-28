@@ -1,4 +1,4 @@
-package com.zeun.ddamap.config;
+package com.zeun.ddamap.global.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

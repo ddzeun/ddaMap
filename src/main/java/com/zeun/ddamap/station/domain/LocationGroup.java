@@ -1,4 +1,4 @@
-package com.zeun.ddamap.domain;
+package com.zeun.ddamap.station.domain;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

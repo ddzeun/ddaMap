@@ -1,6 +1,6 @@
-package com.zeun.ddamap.repository;
+package com.zeun.ddamap.station.repository;
 
-import com.zeun.ddamap.domain.LocationGroup;
+import com.zeun.ddamap.station.domain.LocationGroup;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

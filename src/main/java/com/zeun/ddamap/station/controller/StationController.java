@@ -1,9 +1,8 @@
-package com.zeun.ddamap.controller;
+package com.zeun.ddamap.station.controller;
 
-import com.zeun.ddamap.dto.StationResponseDTO;
-import com.zeun.ddamap.service.StationService;
+import com.zeun.ddamap.station.dto.StationResponseDTO;
+import com.zeun.ddamap.station.service.StationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

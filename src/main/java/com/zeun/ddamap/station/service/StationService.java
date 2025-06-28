@@ -1,11 +1,11 @@
-package com.zeun.ddamap.service;
+package com.zeun.ddamap.station.service;
 
-import com.zeun.ddamap.domain.LocationGroup;
-import com.zeun.ddamap.domain.Station;
-import com.zeun.ddamap.dto.StationResponseDTO;
-import com.zeun.ddamap.dto.StationRowDTO;
-import com.zeun.ddamap.repository.LocationGroupRepository;
-import com.zeun.ddamap.repository.StationRepository;
+import com.zeun.ddamap.station.domain.LocationGroup;
+import com.zeun.ddamap.station.domain.Station;
+import com.zeun.ddamap.station.dto.StationResponseDTO;
+import com.zeun.ddamap.station.dto.StationRowDTO;
+import com.zeun.ddamap.station.repository.LocationGroupRepository;
+import com.zeun.ddamap.station.repository.StationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,6 +1,6 @@
-package com.zeun.ddamap.repository;
+package com.zeun.ddamap.station.repository;
 
-import com.zeun.ddamap.domain.Station;
+import com.zeun.ddamap.station.domain.Station;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface StationRepository extends JpaRepository<Station, String> {

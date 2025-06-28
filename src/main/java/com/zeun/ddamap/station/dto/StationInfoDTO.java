@@ -1,4 +1,4 @@
-package com.zeun.ddamap.dto;
+package com.zeun.ddamap.station.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
