@@ -1,7 +1,8 @@
 package com.zeun.ddamap.service;
 
-import com.zeun.ddamap.repository.LocationGroupRepository;
-import com.zeun.ddamap.repository.StationRepository;
+import com.zeun.ddamap.station.repository.LocationGroupRepository;
+import com.zeun.ddamap.station.repository.StationRepository;
+import com.zeun.ddamap.station.service.StationService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
