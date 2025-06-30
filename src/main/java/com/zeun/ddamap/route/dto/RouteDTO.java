@@ -1,21 +1,12 @@
 package com.zeun.ddamap.route.dto;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public record RouteDTO(
 
-        List<RouteLabel> routeLabels,
-        List<RouteLegDTO> legs,
-        Integer distanceMeters,
-        String duration,
-        String staticDuration,
-        PolylineDTO polyline,
-        String description,
-        List<String> warnings,
-        ViewportDTO viewport,
-        RouteTravelAdvisoryDTO travelAdvisory,
-        List<Integer> optimizedIntermediateWaypointIndex,
-        RouteLocalizedValuesDTO localizedValues,
-        String routeToken,
-        PolylineDetailsDTO polylineDetails
+        Summary summary,
+        List<List<BigDecimal>> path,
+        List<Section> section,
+        List<Guide> guide
 ) {}
