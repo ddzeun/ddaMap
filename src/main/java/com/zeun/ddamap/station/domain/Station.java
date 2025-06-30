@@ -2,6 +2,7 @@ package com.zeun.ddamap.station.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.locationtech.jts.geom.Point;
 
 import java.math.BigDecimal;
 
@@ -33,11 +34,8 @@ public class Station {
     @Column(name = "stn_addr2")
     private String stnAddr2;
 
-    @Column(name = "stn_lat", nullable = false, precision = 10, scale = 8)
-    private BigDecimal stnLat;
-
-    @Column(name = "stn_long", nullable = false, precision = 11, scale = 8)
-    private BigDecimal stnLong;
+    @Column(name = "location", nullable = false, columnDefinition = "POINT")
+    private Point location;
 
     @Column(name = "hold_count")
     private Integer holdCount;
