@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS station;
 DROP TABLE IF EXISTS location_group;
 
 CREATE TABLE location_group (
-                                group_id    INT             NOT NULL    AUTO_INCREMENT,
+                                group_id    BIGINT             NOT NULL    AUTO_INCREMENT,
                                 group_name  VARCHAR(50)     NOT NULL,
                                 PRIMARY KEY (group_id)
 ) ENGINE=InnoDB
@@ -16,7 +16,7 @@ CREATE TABLE location_group (
 CREATE TABLE station (
                         stn_id      VARCHAR(50)     NOT NULL,
                         stn_no      VARCHAR(50)     NULL,
-                        group_id    INT             NULL,
+                        group_id    BIGINT             NULL,
                         stn_name    VARCHAR(100)    NOT NULL,
                         stn_addr1   VARCHAR(255)    NULL,
                         stn_addr2   VARCHAR(255)    NULL,
