@@ -7,9 +7,14 @@ import com.zeun.ddamap.station.dto.StationRowDTO;
 import com.zeun.ddamap.station.repository.LocationGroupRepository;
 import com.zeun.ddamap.station.repository.StationRepository;
 import lombok.RequiredArgsConstructor;
+import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.GeometryFactory;
+import org.locationtech.jts.geom.Point;
+import org.locationtech.jts.geom.PrecisionModel;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -23,6 +28,7 @@ public class StationService {
     @Transactional
     public void updateStationData() {
 
+        final GeometryFactory geometryFactory = new GeometryFactory(new PrecisionModel(), 4326);
         List<StationRowDTO> stationList = stationApiService.fetchStationData().stationInfoDTO().stationList();
 
         stationList.forEach(dto -> {
@@ -33,6 +39,9 @@ public class StationService {
                         return locationGroupRepository.save(newGroup);
                     });
 
+            Coordinate coordinate = new Coordinate(dto.stnLong().doubleValue(), dto.stnLat().doubleValue());
+            Point locationPoint = geometryFactory.createPoint(coordinate);
+
             Station station = Station.builder()
                     .stnId(dto.stnId())
                     .stnNo(dto.stnNo())
@@ -40,8 +49,7 @@ public class StationService {
                     .locationGroup(locationGroup)
                     .stnAddr1(dto.stnAddr1())
                     .stnAddr2(dto.stnAddr2())
-                    .stnLat(dto.stnLat())
-                    .stnLong(dto.stnLong())
+                    .location(locationPoint)
                     .holdCount(dto.holdCount())
                     .build();
 
@@ -52,13 +60,21 @@ public class StationService {
     public List<StationResponseDTO> getAllStations() {
 
         List<StationResponseDTO> stationList = stationRepository.findAll().stream()
-                .map(station -> new StationResponseDTO(
-                        station.getStnId(),
-                        station.getStnName(),
-                        combineAddress(station.getStnAddr1(), station.getStnAddr2()),
-                        station.getStnLat(),
-                        station.getStnLong()
-                )).toList();
+                .map(station -> {
+
+                    Point location = station.getLocation();
+
+                    BigDecimal latitude = BigDecimal.valueOf(location.getY());
+                    BigDecimal longitude = BigDecimal.valueOf(location.getX());
+
+                    return new StationResponseDTO(
+                            station.getStnId(),
+                            station.getStnName(),
+                            combineAddress(station.getStnAddr1(), station.getStnAddr2()),
+                            latitude,
+                            longitude
+                    );
+                }).toList();
 
         return stationList;
     }
