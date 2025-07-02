@@ -1,11 +1,11 @@
-# ?? ?? ??? ??? ??
+# import external config
 spring:
   config:
     import: optional:application-secret.yml
 
 ---
 # ----------------------------------
-# ?? ??
+# common
 # ----------------------------------
 spring:
   application:
@@ -24,7 +24,7 @@ server:
         format_sql: true
 ---
 # ----------------------------------
-# local ???
+# local profile
 # ----------------------------------
 spring:
   config:
@@ -36,11 +36,11 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
 
 ---
 # ----------------------------------
-# dev ???
+# dev profile
 # ----------------------------------
 spring:
   config:
@@ -48,8 +48,8 @@ spring:
       on-profile: dev
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://{????DB??}/ddamap_db
+    url: jdbc:mysql://localhost:3306/ddamap_db
   jpa:
-    show-sql: false
+    show-sql: true
     hibernate:
       ddl-auto: none

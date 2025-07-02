@@ -1,4 +1,4 @@
-package com.zeun.ddamap.service;
+package com.zeun.ddamap.station.service;
 
 import com.zeun.ddamap.station.repository.LocationGroupRepository;
 import com.zeun.ddamap.station.repository.StationRepository;
