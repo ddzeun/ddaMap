@@ -1,70 +1,50 @@
 # =================================================================
 # Secrets
 # =================================================================
-application-secret.yml
+# be
+/backend/src/main/resources/application-secret.yml
+
+# fe
+/frontend/.env.local
 
 
 # =================================================================
 # Build & Logs
 # =================================================================
-# Gradle
-.gradle
-build/
+# Backend - Gradle / Java
+/backend/.gradle/
+/backend/build/
+/backend/*.log
+/backend/out/
 
-# Java
-*.log
-*.jar
-*.war
-
-# Node
-/node_modules
-/dist
-/dist-ssr
-logs
+# Frontend - Node / Vite
+/frontend/node_modules/
+/frontend/dist/
+/frontend/dist-ssr/
+/frontend/logs/
+/frontend/*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-# Local Variable
-*.local
 
 
 # =================================================================
 # IDE & Editors
 # =================================================================
-# IntelliJ IDEA
 .idea/
+
+# IntelliJ
 *.iml
 *.iws
 *.ipr
-out/
 
 # Visual Studio Code
 .vscode/
-
-# STS (Eclipse)
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-
-# NetBeans
-/nbproject/private/
-/nbbuild/
-/nbdist/
-/.nb-gradle/
 
 
 # =================================================================
 # OS
 # =================================================================
-# macOS
 .DS_Store
 ._*
 .Spotlight-V100
