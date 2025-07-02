@@ -1,12 +1,50 @@
+# =================================================================
+# Secrets
+# =================================================================
 application-secret.yml
-HELP.md
+
+
+# =================================================================
+# Build & Logs
+# =================================================================
+# Gradle
 .gradle
 build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
 
-### STS ###
+# Java
+*.log
+*.jar
+*.war
+
+# Node
+/node_modules
+/dist
+/dist-ssr
+logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Local Variable
+*.local
+
+
+# =================================================================
+# IDE & Editors
+# =================================================================
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Visual Studio Code
+.vscode/
+
+# STS (Eclipse)
 .apt_generated
 .classpath
 .factorypath
@@ -15,29 +53,18 @@ build/
 .springBeans
 .sts4-cache
 bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
-
-### NetBeans ###
+# NetBeans
 /nbproject/private/
 /nbbuild/
-/dist/
 /nbdist/
 /.nb-gradle/
 
-### VS Code ###
-.vscode/
 
-### mac ###
+# =================================================================
+# OS
+# =================================================================
+# macOS
 .DS_Store
 ._*
 .Spotlight-V100
