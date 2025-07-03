@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "ddamap-frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,8 +11,9 @@
   },
   "dependencies": {
     "axios": "^1.10.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-naver-maps": "^0.1.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
