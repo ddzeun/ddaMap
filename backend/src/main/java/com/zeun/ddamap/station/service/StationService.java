@@ -29,7 +29,7 @@ public class StationService {
     public void updateStationData() {
 
         final GeometryFactory geometryFactory = new GeometryFactory(new PrecisionModel(), 4326);
-        List<StationRowDTO> stationList = stationApiService.fetchStationData().stationInfoDTO().stationList();
+        List<StationRowDTO> stationList = stationApiService.fetchAllStationData();
 
         stationList.forEach(dto -> {
 

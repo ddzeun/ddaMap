@@ -24,7 +24,7 @@ public class NearbyStationService {
     public List<NearbyStationDTO> findNearbyStationsWithDistance(BigDecimal latitude, BigDecimal longitude) {
 
         int radius = 1000;
-        int limit = 10;
+        int limit = 30;
 
         List<Object[]> idAndDistanceList = nearbyStationRepository.findNearbyStationIds(latitude, longitude, radius, limit);
 
