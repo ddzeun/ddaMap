@@ -7,6 +7,7 @@ function App() {
 
   const naverMapsClientId = import.meta.env.VITE_NAVER_MAP_CLIENT_ID;
 
+/*
 
   useEffect(() => {    
     const fetchStations = async () => {
@@ -19,6 +20,7 @@ function App() {
     };
     fetchStations();
   }, []);
+*/
 
   return (
     <NavermapsProvider ncpKeyId={ naverMapsClientId }>
