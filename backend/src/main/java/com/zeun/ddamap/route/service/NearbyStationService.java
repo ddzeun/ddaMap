@@ -18,7 +18,7 @@ public class NearbyStationService {
 
     public List<NearbyStationDTO> findNearbyStationsWithDistance(BigDecimal lng, BigDecimal lat) {
 
-        String userPoint = String.format("POINT(%s %s)", lat, lng);
+        String userPoint = String.format("POINT(%s %s)", lng, lat);
         int radius = 1000;
         int limit = 10;
 
@@ -31,8 +31,8 @@ public class NearbyStationService {
                             (String) row[3],
                             combineAddress((String) row[4], (String) row[5]),
                             ((Number) row[8]).doubleValue(),
-                            (Double) row[6],
-                            (Double) row[7]
+                            (Double) row[7],
+                            (Double) row[6]
                     );
                 })
                 .collect(Collectors.toList()); // toList()로 변경
