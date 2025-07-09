@@ -2,12 +2,16 @@ package com.zeun.ddamap.route.service;
 
 import com.zeun.ddamap.route.repository.NearbyStationRepository;
 import com.zeun.ddamap.route.dto.NearbyStationDTO;
+import com.zeun.ddamap.station.domain.Station;
+import com.zeun.ddamap.station.repository.StationRepository;
 import lombok.RequiredArgsConstructor;
 import org.locationtech.jts.geom.Point;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -15,27 +19,43 @@ import java.util.stream.Collectors;
 public class NearbyStationService {
 
     private final NearbyStationRepository nearbyStationRepository;
+    private final StationRepository stationRepository; // Station의 상세 정보를 가져오기 위해 주입!
 
-    public List<NearbyStationDTO> findNearbyStationsWithDistance(BigDecimal lng, BigDecimal lat) {
+    public List<NearbyStationDTO> findNearbyStationsWithDistance(BigDecimal latitude, BigDecimal longitude) {
 
-        String userPoint = String.format("POINT(%s %s)", lng, lat);
         int radius = 1000;
         int limit = 10;
 
-        List<Object[]> results = nearbyStationRepository.findNearbyStationsWithDistance(userPoint, radius, limit);
+        List<Object[]> idAndDistanceList = nearbyStationRepository.findNearbyStationIds(latitude, longitude, radius, limit);
 
-        return results.stream()
-                .map(row -> {
+        List<String> stationIds = idAndDistanceList.stream()
+                .map(row -> (String) row[0])
+                .collect(Collectors.toList());
+
+        Map<String, Double> distanceMap = idAndDistanceList.stream()
+                .collect(Collectors.toMap(
+                        row -> (String) row[0],
+                        row -> ((Number) row[1]).doubleValue()
+                ));
+
+        List<Station> stations = stationRepository.findAllById(stationIds);
+
+        return stations.stream()
+                .map(station -> {
+                    Point location = station.getLocation();
+                    Double distance = distanceMap.get(station.getStnId());
+
                     return new NearbyStationDTO(
-                            (String) row[0],
-                            (String) row[3],
-                            combineAddress((String) row[4], (String) row[5]),
-                            ((Number) row[8]).doubleValue(),
-                            (Double) row[7],
-                            (Double) row[6]
+                            station.getStnId(),
+                            station.getStnName(),
+                            combineAddress(station.getStnAddr1(), station.getStnAddr2()),
+                            distance,
+                            BigDecimal.valueOf(location.getY()).doubleValue(),
+                            BigDecimal.valueOf(location.getX()).doubleValue()
                     );
                 })
-                .collect(Collectors.toList()); // toList()로 변경
+                .sorted(Comparator.comparing(NearbyStationDTO::distance))
+                .collect(Collectors.toList());
     }
 
     private String combineAddress(String addr1, String addr2) {

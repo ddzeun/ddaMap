@@ -16,7 +16,7 @@ public class NearbyStationController {
     private final NearbyStationService nearbyStationService;
 
     @GetMapping("/nearby")
-    public List<NearbyStationDTO> findNearbyStations(@RequestParam BigDecimal lng, @RequestParam BigDecimal lat) {
+    public List<NearbyStationDTO> findNearbyStations(@RequestParam BigDecimal lat, @RequestParam BigDecimal lng) {
 
         return nearbyStationService.findNearbyStationsWithDistance(lat, lng);
     }

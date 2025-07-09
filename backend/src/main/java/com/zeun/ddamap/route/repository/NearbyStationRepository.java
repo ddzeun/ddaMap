@@ -5,24 +5,24 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface NearbyStationRepository extends JpaRepository<Station, String> {
 
+    // id와 거리만 반환
     @Query(
-            value = "SELECT S.STN_ID, S.STN_NO, S.GROUP_ID, S.STN_NAME, S.STN_ADDR1, S.STN_ADDR2, " +
-                    "ST_Y(S.LOCATION) LATITUDE, ST_X(S.LOCATION) LONGITUDE, " +
-                    "ST_Distance_Sphere(S.LOCATION, ST_PointFromText(:userPoint, 4326)) AS DISTANCE " +
-                    "FROM   STATION S " +
-                    "WHERE  ST_Distance_Sphere(S.LOCATION, ST_PointFromText(:userPoint, 4326)) <= :radius " +
-                    "ORDER BY DISTANCE ASC " +
+            value = "SELECT     s.stn_id, ST_Distance_Sphere(s.location, ST_SRID(POINT(:longitude, :latitude), 4326)) as distance " +
+                    "FROM       station s " +
+                    "WHERE      ST_Distance_Sphere(s.location, ST_SRID(POINT(:longitude, :latitude), 4326)) <= :radius " +
+                    "ORDER BY distance ASC " +
                     "LIMIT :limit",
             nativeQuery = true
     )
-
-    List<Object[]> findNearbyStationsWithDistance(
-            @Param("userPoint") String userPoint,
-            @Param("radius") int radius,
-            @Param("limit") int limit
+    List<Object[]> findNearbyStationIds(
+                                         @Param("latitude") BigDecimal latitude,
+                                         @Param("longitude") BigDecimal longitude,
+                                         @Param("radius") int radius,
+                                         @Param("limit") int limit
     );
 }
