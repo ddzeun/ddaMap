@@ -58,22 +58,22 @@ export default function MapContainer() {
     }
 
     return (
-        <div style={{ position: 'relative'}}>
-            <MapDiv style={{ width: '80vw', height: '80vh' }}>
-                <NaverMap center={userLocation} defaultZoom={15}>
-                    <Marker position={userLocation} />
+        <div style={{ position: 'relative', width: '100%', height: 'calc(100% - 50px)' }}> {/* h1 높이만큼 빼주기 */}
+            <MapDiv style={{ width: '100%', height: '100%' }}>
+                    <NaverMap center={userLocation} defaultZoom={15}>
+                        <Marker position={userLocation} />
 
-                    {nearbyStations.map(station => (
-                        <Marker onClick={() => { handleMarkerOnclick(station) }}
-                            key={station.stnId}
-                            position={new navermaps.LatLng(station.latitude, station.longitude)}
-                        />
-                    ))}
-                </NaverMap>
-            </MapDiv>
-            {selectedStation && (
-                <StationDetail station={selectedStation} onClose={handlePanelClose}/>
-            )}
+                        {nearbyStations.map(station => (
+                            <Marker onClick={() => { handleMarkerOnclick(station) }}
+                                key={station.stnId}
+                                position={new navermaps.LatLng(station.latitude, station.longitude)}
+                            />
+                        ))}
+                    </NaverMap>
+                </MapDiv>
+                {selectedStation && (
+                    <StationDetail station={selectedStation} onClose={handlePanelClose}/>
+                )}
         </div>
     );
 }
