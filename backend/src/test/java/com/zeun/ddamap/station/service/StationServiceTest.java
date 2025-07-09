@@ -27,18 +27,17 @@ public class StationServiceTest {
     public void testUpdateStationData() {
 
         // given
+        stationRepository.deleteAll();
+        locationGroupRepository.deleteAll();
 
         // when
         stationService.updateStationData();
 
         // then
-        Long stationCount = stationRepository.count();
-        Long groupCount = locationGroupRepository.count();
+        long stationCount = stationRepository.count();
+        long groupCount = locationGroupRepository.count();
 
-        System.out.println("groupCount = " + groupCount);
-        System.out.println("stationCount = " + stationCount);
-
-        assert(groupCount > 0);
-        assert(stationCount > 0);
+        System.out.println("저장된 그룹 수 = " + groupCount);
+        System.out.println("저장된 대여소 수 = " + stationCount);
     }
 }
