@@ -2,12 +2,14 @@ import { Container as MapDiv, NaverMap, Marker, useNavermaps } from "react-naver
 import { useState, useEffect } from "react";
 import { getNearbyStations } from "../api/stationApi.js";
 import { getUserLocation } from "../api/geolocationApi.js";
+import StationDetail from "./StationDetail.jsx";
 
 export default function MapContainer() {
 
     const navermaps = useNavermaps();
     const [userLocation, setUserLocation] = useState(null);
     const [nearbyStations, setNearbyStations] = useState([]);
+    const [selectedStation, setSelectedStation] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -43,22 +45,35 @@ export default function MapContainer() {
         fetchNearbyStations();
     }, [userLocation]);
 
+    const handleMarkerOnclick = (station) => {
+        setSelectedStation(station);
+    }
+
+    const handlePanelClose = () => {
+        setSelectedStation(null);
+    };
+
     if (isLoading || !userLocation) {
         return <div>지도 로딩 중...</div>;
     }
 
     return (
-        <MapDiv style={{ width: '80vw', height: '80vh' }}>
-            <NaverMap center={userLocation} defaultZoom={15}>
-                <Marker position={userLocation} />
+        <div style={{ position: 'relative'}}>
+            <MapDiv style={{ width: '80vw', height: '80vh' }}>
+                <NaverMap center={userLocation} defaultZoom={15}>
+                    <Marker position={userLocation} />
 
-                {nearbyStations.map(station => (
-                    <Marker
-                        key={station.stnId}
-                        position={new navermaps.LatLng(station.latitude, station.longitude)}
-                    />
-                ))}
-            </NaverMap>
-        </MapDiv>
+                    {nearbyStations.map(station => (
+                        <Marker onClick={() => { handleMarkerOnclick(station) }}
+                            key={station.stnId}
+                            position={new navermaps.LatLng(station.latitude, station.longitude)}
+                        />
+                    ))}
+                </NaverMap>
+            </MapDiv>
+            {selectedStation && (
+                <StationDetail station={selectedStation} onClose={handlePanelClose}/>
+            )}
+        </div>
     );
 }
