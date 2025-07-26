@@ -20,8 +20,14 @@ export default function MapContainer() {
         return <div>지도 로딩중 ... </div>
     }
 
+    const containerStyle = {
+        position: 'relative',
+        flex: 1,
+        width: '100%'
+    };
+
     return (
-        <div style={{ position: 'relative', width: '100%', height: 'calc(100% - 50px)' }}>
+        <div style={containerStyle}>
             <MapView
                 userLocation={userLocation}
                 stations={nearbyStations}
@@ -34,5 +40,5 @@ export default function MapContainer() {
                 />
             )}
         </div>
-    )
+    );
 }
