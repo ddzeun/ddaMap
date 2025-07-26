@@ -1,26 +1,27 @@
-package com.zeun.ddamap.route.dto;
+package com.zeun.ddamap.route.dto.external;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import java.util.stream.Stream;
 
-public enum Direction {
+public enum Congestion {
 
-    FORWARD(0),
-    LEFT(1),
-    RIGHT(2);
+    NONE(0),
+    SMOOTH(1),
+    SLOW(2),
+    CONGESTED(3);
 
     private final int value;
 
-    Direction(int value) {
+    Congestion(int value) {
 
         this.value = value;
     }
 
     @JsonCreator
-    public static Direction fromValue(int value) {
+    public static Congestion fromValue(int value) {
 
-        return Stream.of(Direction.values())
+        return Stream.of(Congestion.values())
                 .filter(c -> c.value == value)
                 .findFirst()
                 .orElse(null);

@@ -1,7 +1,7 @@
 package com.zeun.ddamap.route.controller;
 
 import com.zeun.ddamap.route.service.NearbyStationService;
-import com.zeun.ddamap.route.dto.NearbyStationDTO;
+import com.zeun.ddamap.route.dto.response.NearbyStationDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

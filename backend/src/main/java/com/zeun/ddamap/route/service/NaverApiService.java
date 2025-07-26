@@ -1,6 +1,6 @@
 package com.zeun.ddamap.route.service;
 
-import com.zeun.ddamap.route.dto.ResponseApiDTO;
+import com.zeun.ddamap.route.dto.external.ResponseApiDTO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;

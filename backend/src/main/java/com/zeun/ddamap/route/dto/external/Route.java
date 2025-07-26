@@ -1,4 +1,4 @@
-package com.zeun.ddamap.route.dto;
+package com.zeun.ddamap.route.dto.external;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 
