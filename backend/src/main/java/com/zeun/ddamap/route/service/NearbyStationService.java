@@ -1,7 +1,7 @@
 package com.zeun.ddamap.route.service;
 
 import com.zeun.ddamap.route.repository.NearbyStationRepository;
-import com.zeun.ddamap.route.dto.NearbyStationDTO;
+import com.zeun.ddamap.route.dto.response.NearbyStationDTO;
 import com.zeun.ddamap.station.domain.Station;
 import com.zeun.ddamap.station.repository.StationRepository;
 import lombok.RequiredArgsConstructor;

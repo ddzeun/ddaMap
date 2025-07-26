@@ -1,4 +1,4 @@
-package com.zeun.ddamap.route.dto;
+package com.zeun.ddamap.route.dto.external;
 
 public record Section(
 

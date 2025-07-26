@@ -1,6 +1,4 @@
-package com.zeun.ddamap.route.dto;
-
-import org.locationtech.jts.geom.Point;
+package com.zeun.ddamap.route.dto.response;
 
 public record NearbyStationDTO(
 

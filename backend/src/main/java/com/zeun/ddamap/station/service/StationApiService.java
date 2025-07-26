@@ -1,7 +1,7 @@
 package com.zeun.ddamap.station.service;
 
-import com.zeun.ddamap.station.dto.StationApiResponse;
-import com.zeun.ddamap.station.dto.StationRowDTO;
+import com.zeun.ddamap.station.dto.external.StationApiResponse;
+import com.zeun.ddamap.station.dto.external.StationRowDTO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;

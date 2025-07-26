@@ -3,7 +3,7 @@ package com.zeun.ddamap.station.service;
 import com.zeun.ddamap.station.domain.LocationGroup;
 import com.zeun.ddamap.station.domain.Station;
 import com.zeun.ddamap.station.dto.StationResponseDTO;
-import com.zeun.ddamap.station.dto.StationRowDTO;
+import com.zeun.ddamap.station.dto.external.StationRowDTO;
 import com.zeun.ddamap.station.repository.LocationGroupRepository;
 import com.zeun.ddamap.station.repository.StationRepository;
 import lombok.RequiredArgsConstructor;

@@ -1,8 +1,4 @@
-package com.zeun.ddamap.route.dto;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.util.List;
+package com.zeun.ddamap.route.dto.external;
 
 public record ResponseApiDTO(
 

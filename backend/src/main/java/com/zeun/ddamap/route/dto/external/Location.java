@@ -1,4 +1,4 @@
-package com.zeun.ddamap.route.dto;
+package com.zeun.ddamap.route.dto.external;
 
 import java.math.BigDecimal;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.zeun.ddamap.route.service;
 
-import com.zeun.ddamap.route.dto.NearbyStationDTO;
+import com.zeun.ddamap.route.dto.response.NearbyStationDTO;
 import com.zeun.ddamap.route.repository.NearbyStationRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
