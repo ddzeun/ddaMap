@@ -1,6 +1,13 @@
 import { Container as MapDiv, NaverMap, Marker, useNavermaps } from "react-naver-maps";
+import { Station } from "../types/station";
 
-export default function MapView({ userLocation, stations, onMarkerClick}) {
+interface MapViewProps {
+    userLocation: { lat: number; lng: number };
+    stations: Station[];
+    onMarkerClick: (station: Station) => void;
+}
+
+export default function MapView({ userLocation, stations, onMarkerClick}: MapViewProps) {
 
     const navermaps = useNavermaps();
 

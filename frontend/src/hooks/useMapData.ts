@@ -1,12 +1,18 @@
 import { useState, useEffect } from "react";
-import {getUserLocation} from "../api/geolocationApi.js";
-import {getNearbyStations} from "../api/stationApi.js";
+import { getUserLocation } from "../api/geolocationApi";
+import { getNearbyStations } from "../api/stationApi";
+import { Station } from "../types/station"; // Station 타입 재사용
+
+interface UserLocation {
+  lat: number;
+  lng: number;
+}
 
 export const useMapData = () => {
+    const [userLocation, setUserLocation] = useState<UserLocation | null>(null);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [nearbyStations, setNearbyStations] = useState<Station[]>([]);
 
-    const [userLocation, setUserLocation] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [nearbyStations, setNearbyStations] = useState([]);
 
     useEffect(() => {
         const fetchUserLocation = async () => {

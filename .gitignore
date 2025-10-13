@@ -1,40 +1,48 @@
 # =================================================================
-# Secrets
+# Secrets & Environment Variables
 # =================================================================
-# be
+# Backend
 /backend/src/main/resources/application-secret.yml
 
-# fe
+# Frontend
 /frontend/.env.local
+/frontend/.env.*.local
 
 
 # =================================================================
-# Build & Logs
+# Dependencies
 # =================================================================
-# Backend - Gradle / Java
+# Backend - Gradle
 /backend/.gradle/
-/backend/build/
-/backend/*.log
-/backend/out/
 
-# Frontend - Node / Vite
+# Frontend - Node
 /frontend/node_modules/
+
+# =================================================================
+# Build Artifacts & Logs
+# =================================================================
+# Backend - Java/Gradle
+/backend/build/
+/backend/out/
+/backend/*.log
+
+# Frontend - Vite/Node
 /frontend/dist/
 /frontend/dist-ssr/
+/frontend/.vite/
 /frontend/logs/
 /frontend/*.log
-/frontend/.vite/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
 
 # =================================================================
-# IDE & Editors
+# IDE & Editor Configuration
 # =================================================================
-.idea/
-
 # IntelliJ
+.idea/
 *.iml
 *.iws
 *.ipr
@@ -44,9 +52,10 @@ yarn-error.log*
 
 
 # =================================================================
-# OS
+# OS Generated Files
 # =================================================================
 .DS_Store
 ._*
 .Spotlight-V100
 .Trashes
+Thumbs.db
