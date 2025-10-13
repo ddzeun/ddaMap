@@ -1,14 +1,14 @@
-import {useMapData} from "../hooks/useMapData.js";
-import {useState} from "react";
-import StationDetail from "./StationDetail.jsx";
-import MapView from "./MapView.jsx";
+import { useMapData } from "../hooks/useMapData.js";
+import { useState } from "react";
+import StationDetail from "./StationDetail";
+import MapView from "./MapView";
+import { Station } from "../types/station";
 
 export default function MapContainer() {
-
     const { userLocation, nearbyStations, isLoading } = useMapData();
-    const [selectedStation, setSelectedStation] = useState(null);
+    const [selectedStation, setSelectedStation] = useState<Station | null>(null);
 
-    const handleMarkerClick = (station) => {
+    const handleMarkerClick = (station: Station) => {
         setSelectedStation(station);
     }
 
@@ -16,7 +16,7 @@ export default function MapContainer() {
         setSelectedStation(null);
     }
 
-    if (isLoading) {
+    if (isLoading || !userLocation) {
         return <div>지도 로딩중 ... </div>
     }
 
