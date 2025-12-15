@@ -1,5 +1,7 @@
 import MapContainer from './components/MapContainer';
 import { NavermapsProvider } from 'react-naver-maps';
+import SearchBar from './components/SearchBar';
+import BottomNav from './components/BottomNav';
 import './App.css';
 
 function App() {
@@ -9,8 +11,9 @@ function App() {
         <NavermapsProvider ncpKeyId={naverMapsClientId}>
             <div className="App">
                 <div className="App-container">
-                    <h1>따맵</h1>
-                    <MapContainer/>
+                    <SearchBar />
+                    <MapContainer />
+                    <BottomNav />
                 </div>
             </div>
         </NavermapsProvider>
